@@ -1,0 +1,22 @@
+# Go
+pkg/
+bin/
+
+# IDEA
+*.iml
+.idea/
+out/
+
+# Gradle
+.gradle/
+build/
+
+# Cargo
+target/
+
+# Others
+# *.luac
+*.DS_Store
+
+# exe
+*.exe
