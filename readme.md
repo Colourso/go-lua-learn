@@ -7,4 +7,9 @@
 go-lua-learn.exe ./test/luac.out
 ```
 
-![执行结果示例](pic/run.png)
+## ch2 执行结果
+
+![执行结果示例](pic/ch2run.png)
+
+## ch3执行结果
+![执行结果示例](pic/ch3run.png)

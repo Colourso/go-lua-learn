@@ -6,6 +6,20 @@ const MAXARG_sBx = MAXARG_Bx >> 1 // 131071
 // Lua指令定长，4字节 32位
 type Instruction uint32
 
+/*
+ 31       22       13       5    0
+  +-------+^------+-^-----+-^-----
+  |b=9bits |c=9bits |a=8bits|op=6|
+  +-------+^------+-^-----+-^-----
+  |    bx=18bits    |a=8bits|op=6|
+  +-------+^------+-^-----+-^-----
+  |   sbx=18bits    |a=8bits|op=6|
+  +-------+^------+-^-----+-^-----
+  |    ax=26bits            |op=6|
+  +-------+^------+-^-----+-^-----
+ 31      23      15       7      0
+*/
+
 // -----------------解析编码------------------------
 
 func (self Instruction) Opcode() int {
@@ -16,8 +30,8 @@ func (self Instruction) Opcode() int {
 
 func (self Instruction) ABC() (a, b, c int) {
 	a = int(self >> 6 & 0xFF)   // 8位
-	b = int(self >> 14 & 0x1FF) // 9位
-	c = int(self >> 23 & 0x1FF) // 9位
+	c = int(self >> 14 & 0x1FF) // 9位
+	b = int(self >> 23 & 0x1FF) // 9位
 	return
 }
 
